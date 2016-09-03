@@ -3,7 +3,13 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Admin - Locadora{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <style>
+                .margin-top-4 {
+                    margin-top: 4%;
+                }
+            </style>    
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" /> 
     </head>
@@ -22,8 +28,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">Veículos</a></li>
+                <li class="active"><a href="{{ path('admin_default_index') }}">Home</a></li>
+                <li><a href="{{ path('veiculo_index') }}">Veículos</a></li>
                 <li><a href="#contact">Clientes</a></li>
               </ul>
             </div><!--/.nav-collapse -->

@@ -1,9 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block body %}
-    <h1>Veiculo list</h1>
-
-    <table>
+    
+    <div class="container">
+        <div class="col-md-6">
+            <h1>Lista de Veículos</h1>
+        </div>
+        <div class="col-md-6">
+            <a href="{{ path('veiculo_new') }}" class="btn btn-primary pull-right margin-top-4">Cadastrar Novo</a> 
+        </div>    
+    </div>    
+    <table class="table table-hover"> 
         <thead>
             <tr>
                 <th>Id</th>
@@ -12,6 +19,7 @@
                 <th>Ano</th>
                 <th>Cor</th>
                 <th>Categoria</th>
+                <th>Cidade</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,24 +32,13 @@
                 <td>{% if veiculo.ano %}{{ veiculo.ano|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ veiculo.cor }}</td>
                 <td>{{ veiculo.categoria }}</td>
+                <td>{{ veiculo.cidade }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('veiculo_show', { 'id': veiculo.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('veiculo_edit', { 'id': veiculo.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a href="{{ path('veiculo_edit', { 'id': veiculo.id }) }}">editar</a>
+                    <span class="glyphicon glyphicon-pencil"></span>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('veiculo_new') }}">Create a new entry</a>
-        </li>
-    </ul>
 {% endblock %}
