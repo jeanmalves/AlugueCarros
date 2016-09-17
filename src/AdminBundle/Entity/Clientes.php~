@@ -1,0 +1,28 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="clientes")
+ */
+class Clientes 
+{
+    /**
+     * @ORM\Column(type="string", length=11)
+     * @ORM\Id
+     */
+    private $cpf;
+    
+    /**
+     * @ORM\Column(type="string", length=80)
+     */
+    private $nome;
+    
+    /**
+     * @ORM\Column(type="string", length=12)
+     */
+    private $telefone;
+}
