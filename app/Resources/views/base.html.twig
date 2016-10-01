@@ -41,11 +41,13 @@
                   </ul>
                 </li>
               </ul>
-              <!--<ul class="nav navbar-nav navbar-right">
-                <li><a href="../navbar/">Default</a></li>
-                <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
-                <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-              </ul>-->
+              <ul class="nav navbar-nav navbar-right">
+                {% if (app.user) %}  
+                    <li><a href="{{ logout_url() }}">{{ app.user.nome }}</a></li>
+                {% else %}    
+                    <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                {% endif %}    
+              </ul>
             </div><!--/.nav-collapse -->
           </div>
         </nav>
