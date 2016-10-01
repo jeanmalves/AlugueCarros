@@ -4,19 +4,17 @@
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
       <h1>Alugue um Carro</h1>
-      <form class="form-inline">
+      <form class="form-inline" method="POST" action="/pesquisa">
         <div class="form-group">
           <select name="cidade" class="form-control">
-              <option value="1">Curitiba</option>
-              <option value="2">Florianópolis</option>
-              <option value="3">São Paulo</option>
+              {% for cidade in listaCidades %}
+                  <option value="{{ cidade.id }}">{{ cidade.nome }}</option>
+              {% endfor %}
           </select>
         </div>
         <div class="input-daterange input-group" id="datepicker">
-            <input type="text" class="form-control" name="start" />
-            <span class="input-group-addon">até</span>
-            <input type="text" class="form-control" name="end" />
-        </div> 
+            <input type="text" class="form-control" name="range" id="range-dias" />
+        </div>
         <button type="submit" class="btn btn-success">Pesquisar</button>
       </form>
     </div>
@@ -25,7 +23,7 @@
 {% block javascripts %}
     <script type="text/javascript" src="{{ asset('locales/bootstrap-datepicker.pt-BR.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
-    
+
     <script type="text/javascript">
         $(document).ready(function(){
             $('#datepicker').datepicker({

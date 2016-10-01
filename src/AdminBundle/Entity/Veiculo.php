@@ -8,51 +8,57 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  * @ORM\Table(name="veiculos")
+ * @ORM\Entity(repositoryClass="AdminBundle\Entity\VeiculoRepository")
  */
 class Veiculo
-{   
+{
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @ORM\Column(type="string", length=40)
      */
     private $marca;
-    
+
     /**
      * @ORM\Column(type="string", length=40)
-     * 
+     *
      * @Assert\NotBlank()
      * @Assert\Length(min=3, minMessage = "É preciso ter pelo menos 3 caracteres.")
      */
-    
+
     private $modelo;
-    
+
     /**
      * @ORM\Column(type="date")
      */
     private $ano;
-    
+
     /**
      * @ORM\Column(type="string", length=40)
      */
     private $cor;
-    
+
     /**
      * @ORM\Column(type="string", length=40)
      */
     private $categoria;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Cidades")
      * @ORM\JoinColumn(name="cidade_id", referencedColumnName="id")
      */
     private $cidade;
-    
+
+    /**
+     * @ORM\Column(type="decimal", scale=2)
+     */
+    private $preco;
+
     /**
      * Get id
      *
