@@ -21,20 +21,26 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('locales/bootstrap-datepicker.pt-BR.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/moment.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/daterangepicker.js') }}"></script>
 
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#datepicker').datepicker({
-                format: 'dd/mm/yyyy',
-                language: "pt-BR",
-                multidata:false
-            });
+          var hoje = new Date();
+          var semana = new Date();
+          semana.setHours(168);
+           $('#range-dias').daterangepicker(
+              {
+                  locale: {
+                    format: 'DD/MM/YYYY'
+                  },
+                  startDate: hoje,
+                  endDate: semana
+              });
         });
     </script>
 {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}" />
+    <link href="{{ asset('css/daterangepicker.css') }}" rel="stylesheet" type="text/css"/>
 {% endblock %}
