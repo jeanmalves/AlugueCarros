@@ -46,6 +46,18 @@ class VeiculoController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            //$imagem = $form->get('image')->getData();
+            
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $imagem = $veiculo->getImage();
+            
+            $pasta = $this->getParameter('image_dir');
+            $nomeArquivo = uniqid().'.'.$imagem->guessExtension();
+            
+            $imagem->move($pasta, $nomeArquivo);
+            $veiculo->setImage($nomeArquivo);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($veiculo);
             $em->flush();

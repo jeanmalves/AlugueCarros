@@ -30,7 +30,6 @@ class Veiculo
      * @Assert\NotBlank()
      * @Assert\Length(min=3, minMessage = "É preciso ter pelo menos 3 caracteres.")
      */
-
     private $modelo;
 
     /**
@@ -58,6 +57,13 @@ class Veiculo
      * @ORM\Column(type="decimal", scale=2)
      */
     private $preco;
+    
+    /**
+     * @ORM\Column(type="string", length=100)
+     * 
+     * @Assert\Image()
+     */
+    private $image;
 
     /**
      * Get id
@@ -212,4 +218,38 @@ class Veiculo
     {
         return $this->cidade;
     }
+    
+    /*
+     * 
+     */
+    public function getPreco() {
+        return $this->preco;
+    }
+    
+    /*
+     * 
+     */
+    public function setPreco($preco) {
+        $this->preco = $preco;
+        return $this;
+    }
+    
+    /*
+     * Get Image
+     * 
+     * @return string
+     */
+    public function getImage() {
+        return $this->image;
+    }
+    
+    /*
+     * 
+     */
+    public function setImage($image) {
+        $this->image = $image;
+        return $this;
+    }
+
+
 }
